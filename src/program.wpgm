@@ -1,0 +1,46 @@
+import main.*
+program navidad {
+	
+	/* Punto 1 */
+	const arbolNavidad = new Arbol()
+	arbolNavidad.vejez(4)
+	arbolNavidad.tamanio(5)
+	console.println('La capacidad disponible del arbolGrande por primrara vez es :')
+	console.println(arbolNavidad.capacidadDisponible())
+	
+	/* Punto 2 */
+	 const jose = new Persona()
+	 const pelota = new Regalo()
+	 pelota.destinatario(jose)
+	 
+	 arbolNavidad.agregarElemento(pelota)
+	 
+	 console.println('La capacidad disponible del arbolGrande es :')
+	 console.println(arbolNavidad.capacidadDisponible())
+	
+	/* Punto 3 */
+	
+	const autito = new Regalo()
+	arbolNavidad.agregarElemento(autito)
+	const tarjeta = new Tarjeta()
+	arbolNavidad.agregarElemento(tarjeta)
+	arbolNavidad.destinatarioElemento(jose)
+	
+	/* Punto 4 */
+	 
+	 const juan = new Persona()
+	 const medias = new Regalo()
+	 const tarjeta1 = new Tarjeta()
+	 
+	 pelota.destinatario(juan)
+	 tarjeta1.destinatario(juan)
+	 tarjeta1.importancia(2)
+	 medias.destinatario(juan)
+	 
+	 arbolNavidad.agregarElemento(medias)
+	 arbolNavidad.agregarElemento(tarjeta1)
+	 
+	 console.println(' La importancia del arbol de Navidad es :')
+	 console.println(arbolNavidad.importancia())
+
+}

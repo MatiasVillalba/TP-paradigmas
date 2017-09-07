@@ -1,0 +1,56 @@
+import main.*
+
+test "La capacidad del arbol navideño con una vejez de 4 y un tamaño de tronco de 5 debe ser igual a 20" {
+	const arbolNavidad = new Arbol()
+	arbolNavidad.vejezArbol(4)
+	arbolNavidad.tamanioDelTronco(5)
+	console.println("La capacidad disponible del arbol es :")
+	console.println(arbolNavidad.capacidadDisponible())
+
+}
+
+test "Se agrega un adorno al arbol de navidad" {
+	const arbolNavidad = new Arbol()
+	arbolNavidad.vejezArbol(4)
+	arbolNavidad.tamanioDelTronco(5)
+	const pelota = new Adorno()
+	pelota.pesoAdorno(2)
+	pelota.coeficiente(4)
+	arbolNavidad.agregarElemento(pelota)
+	assert.that(arbolNavidad.elementosDelArbol().contains(pelota))
+}
+
+test "Todos los elementos de un arbol de navidad tienen por destinatario a pepe" {
+	const arbolNavidad = new Arbol()
+	arbolNavidad.vejezArbol(4)
+	arbolNavidad.tamanioDelTronco(5)
+	const pelota = new Regalo()
+	arbolNavidad.agregarElemento(pelota)
+	const autito = new Regalo()
+	arbolNavidad.agregarElemento(autito)
+	const tarjeta = new Tarjeta()
+	arbolNavidad.agregarElemento(tarjeta)
+	const pepe = new Persona()
+	arbolNavidad.destinatarioElemento(pepe)
+	
+	assert.that(pelota.destinatario().contains(pepe))
+	assert.that(autito.destinatario().contains(pepe))
+	assert.equals(tarjeta.destinatario(),pepe)
+}
+
+test "La importancia de un arbol navideño con una estrella de Belen, 1 pelota y una tarjeta es 20" {
+	const arbolNavidad = new Arbol()
+	arbolNavidad.vejezArbol(4)
+	arbolNavidad.tamanioDelTronco(5)
+	const pelota = new Regalo()
+	arbolNavidad.agregarElemento(pelota)
+	const tarjeta = new Tarjeta()
+	tarjeta.importancia(2)
+	arbolNavidad.agregarElemento(tarjeta)
+	arbolNavidad.agregarElemento(estrellaDeBelen)
+	const juan = new Persona()
+	pelota.destinatario(juan) 
+	assert.equals(arbolNavidad.importancia(),14)
+	
+}
+
