@@ -54,3 +54,53 @@ test "La importancia de un arbol navideño con una estrella de Belen, 1 pelota y 
 	
 }
 
+
+
+test "Se elimina del arbol la figura ya que ocupa mas de 5 lugares" {
+	const arbolNavidad = new Arbol()
+	arbolNavidad.vejezArbol(4)
+	arbolNavidad.tamanioDelTronco(5)
+	const figura = new Figura()
+	const adorno1 = new Adorno()
+	adorno1.pesoAdorno(2)
+	adorno1.coeficiente(3)
+	const adorno2 = new Adorno()
+	adorno2.pesoAdorno(3)
+	adorno2.coeficiente(4)
+	figura.adornosFigura(adorno1)
+	figura.adornosFigura(adorno2)
+	arbolNavidad.agregarElemento(figura)
+	const tarjeta = new Tarjeta()
+	const pepe = new Persona()
+	tarjeta.destinatario(pepe)
+	tarjeta.importancia(2)
+	arbolNavidad.agregarElemento(tarjeta)
+	arbolNavidad.eliminarCosasVoluminosas()
+	assert.that(arbolNavidad.elementosDelArbol().contains(figura).negate())
+	
+}
+
+/*test "Se muestra todos los destinatarios diferentes de un arbol" {
+	const arbolNavidad = new Arbol()
+	arbolNavidad.vejezArbol(4)
+	arbolNavidad.tamanioDelTronco(5)
+	const pelota = new Regalo()
+	const autito = new Regalo()
+	const tarjeta = new Tarjeta()
+	tarjeta.importancia(2)
+	const juan = new Persona()
+	juan.nombre("juan")
+	const luis = new Persona()
+	luis.nombre("luis")
+	const pepe = new Persona()
+	pepe.nombre("pepe")
+	pelota.destinatario(luis)
+	pelota.destinatario(juan)
+	autito.destinatario(juan)
+	tarjeta.destinatario(pepe)
+	arbolNavidad.agregarElemento(pelota)
+	arbolNavidad.agregarElemento(autito)
+	arbolNavidad.agregarElemento(tarjeta)
+	
+} */
+

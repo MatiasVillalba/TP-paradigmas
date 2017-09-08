@@ -52,9 +52,22 @@ class Arbol {
 	}
 	
 	method eliminarCosasVoluminosas() {
-		
+		self.elementosQueOcupanMasDe5Lugares().forEach({e => self.elementosDelArbol().remove(e)})
 	}
-
+	
+	method elementosQueOcupanMasDe5Lugares() {
+		return self.elementosDelArbol().filter({e => e.cantidadDeLugaresQueOcupa() > 5})	
+	}
+	
+	method promedioDeImportancia() {
+		return self.importancia() / self.elementosDelArbol().size()
+	}
+	
+	method cantDeElementosMasImportantes() {
+		return self.elementosDelArbol().filter({ele => ele.importancia() > ele.promedioDeImportancia()})
+	}
+	
+	
 
 }
 
@@ -119,6 +132,10 @@ class Adorno {
 		return peso
 	}
 	
+	method destinatario() {
+		return []
+	}
+	
 	method coeficiente(coeficienteS) {
 		coeficienteSuperioridad = coeficienteS
 	}
@@ -137,11 +154,15 @@ class Adorno {
 	
 }
 
-object figura {
+class Figura {
 	var adornos = []
 	
 	method adornosFigura() {
 		return adornos
+	}
+	
+	method adornosFigura(unAdorno) {
+		adornos.add(unAdorno)
 	}
 	
 	method importancia() {
@@ -154,6 +175,7 @@ object figura {
 }
 
 object estrellaDeBelen {
+	var destinatarios
 	
 	method cantidadDeLugaresQueOcupa() {
 		return 1
@@ -164,10 +186,27 @@ object estrellaDeBelen {
 	}
 	
 	method destinatario() {
-		
+		return destinatarios
 	}
 }
 
 class Persona {
+	var nombre
+	var esHabitante
 	
+	method nombre() {
+		return nombre
+	}
+	
+	method nombre(unNombre) {
+		nombre = unNombre
+	}
+	
+	method habitanteCasa() {
+		return esHabitante
+	}
+	
+	method habitanteCasa(valor) {
+		esHabitante = valor
+	}
 }
