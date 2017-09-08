@@ -67,8 +67,17 @@ class Arbol {
 		return self.elementosDelArbol().filter({ele => ele.importancia() > ele.promedioDeImportancia()})
 	}
 	
-	method distintosDestinatarios() {
-		return self.elementosDelArbol().map({e => e.destinatario()}).asSet()
+	method destinatarios() {
+		return self.elementosDelArbol().map({elem => elem.destinatario()}).asSet()
+	}
+	
+	method regalosPara(persona) {
+		return self.elementosDelArbol().filter({elem => elem.destinatario().contains(persona)})
+	}
+	
+	
+	method destinatariosOrdenados() {
+		return self.destinatarios().sortBy({destA,destB => self.regalosPara(destA).size() > self.regalosPara(destB).size()})
 	}
 	
 	
@@ -206,8 +215,6 @@ object estrellaDeBelen {
 
 class Persona {
 	var nombre
-	var esHabitante
-	var cosasQuePosee = []
 	
 	method nombre() {
 		return nombre
@@ -217,21 +224,6 @@ class Persona {
 		nombre = unNombre
 	}
 	
-	method habitanteCasa() {
-		return esHabitante
-	}
-	
-	method habitanteCasa(valor) {
-		esHabitante = valor
-	}
-	
-	method cosasQuePosee(algo) {
-		cosasQuePosee.add(algo)
-	}
-	
-	method cosasQuePosee() { 
-		return cosasQuePosee
-	}
 	
 	
 }
