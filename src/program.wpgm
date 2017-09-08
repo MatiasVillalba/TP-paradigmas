@@ -12,7 +12,7 @@ program navidad {
 	 const jose = new Persona()
 	 const pelota = new Regalo()
 	 pelota.destinatario(jose)
-	 
+
 	 arbolNavidad.agregarElemento(pelota)
 	 
 	 console.println('La capacidad disponible del arbolGrande es :')

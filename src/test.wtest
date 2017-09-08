@@ -31,6 +31,7 @@ test "Todos los elementos de un arbol de navidad tienen por destinatario a pepe"
 	const tarjeta = new Tarjeta()
 	arbolNavidad.agregarElemento(tarjeta)
 	const pepe = new Persona()
+	pepe.habitanteCasa(false)
 	arbolNavidad.destinatarioElemento(pepe)
 	
 	assert.that(pelota.destinatario().contains(pepe))
@@ -49,6 +50,7 @@ test "La importancia de un arbol navideño con una estrella de Belen, 1 pelota y 
 	arbolNavidad.agregarElemento(tarjeta)
 	arbolNavidad.agregarElemento(estrellaDeBelen)
 	const juan = new Persona()
+	juan.habitanteCasa(false)
 	pelota.destinatario(juan) 
 	assert.equals(arbolNavidad.importancia(),14)
 	
@@ -72,6 +74,7 @@ test "Se elimina del arbol la figura ya que ocupa mas de 5 lugares" {
 	arbolNavidad.agregarElemento(figura)
 	const tarjeta = new Tarjeta()
 	const pepe = new Persona()
+	pepe.habitanteCasa(false)
 	tarjeta.destinatario(pepe)
 	tarjeta.importancia(2)
 	arbolNavidad.agregarElemento(tarjeta)
@@ -80,7 +83,9 @@ test "Se elimina del arbol la figura ya que ocupa mas de 5 lugares" {
 	
 }
 
-/*test "Se muestra todos los destinatarios diferentes de un arbol" {
+
+
+test "Se muestra todos los destinatarios diferentes de un arbol" {
 	const arbolNavidad = new Arbol()
 	arbolNavidad.vejezArbol(4)
 	arbolNavidad.tamanioDelTronco(5)
@@ -98,9 +103,14 @@ test "Se elimina del arbol la figura ya que ocupa mas de 5 lugares" {
 	pelota.destinatario(juan)
 	autito.destinatario(juan)
 	tarjeta.destinatario(pepe)
+	luis.cosasQuePosee(pelota)
+	juan.cosasQuePosee(pelota)
+	juan.cosasQuePosee(autito)
+	pepe.cosasQuePosee(tarjeta)
 	arbolNavidad.agregarElemento(pelota)
 	arbolNavidad.agregarElemento(autito)
 	arbolNavidad.agregarElemento(tarjeta)
+	console.println(arbolNavidad.distintosDestinatarios())
 	
-} */
+} 
 

@@ -67,6 +67,10 @@ class Arbol {
 		return self.elementosDelArbol().filter({ele => ele.importancia() > ele.promedioDeImportancia()})
 	}
 	
+	method distintosDestinatarios() {
+		return self.elementosDelArbol().map({e => e.destinatario()}).asSet()
+	}
+	
 	
 
 }
@@ -80,6 +84,7 @@ class Regalo {
 	
 	method destinatario(alguien) {
 		destinatarios.add(alguien)
+
 	}
 	
 	method cantidadDestinatarios() {
@@ -105,6 +110,7 @@ class Tarjeta {
 	
 	method destinatario(alguien) {
 		destinatario = alguien
+	
 	}
 	
 	method importancia(valor) {
@@ -165,6 +171,10 @@ class Figura {
 		adornos.add(unAdorno)
 	}
 	
+	method destinatario() {
+		return []
+	}
+	
 	method importancia() {
 		return self.adornosFigura().max({e => e.importancia()})
 	}
@@ -175,7 +185,7 @@ class Figura {
 }
 
 object estrellaDeBelen {
-	var destinatarios
+	var destinatarios = []
 	
 	method cantidadDeLugaresQueOcupa() {
 		return 1
@@ -183,6 +193,10 @@ object estrellaDeBelen {
 	
 	method importancia() {
 		return 10
+	}
+	
+	method agregarDestinatario(alguien) {
+		destinatarios.add(alguien)
 	}
 	
 	method destinatario() {
@@ -193,6 +207,7 @@ object estrellaDeBelen {
 class Persona {
 	var nombre
 	var esHabitante
+	var cosasQuePosee = []
 	
 	method nombre() {
 		return nombre
@@ -209,4 +224,14 @@ class Persona {
 	method habitanteCasa(valor) {
 		esHabitante = valor
 	}
+	
+	method cosasQuePosee(algo) {
+		cosasQuePosee.add(algo)
+	}
+	
+	method cosasQuePosee() { 
+		return cosasQuePosee
+	}
+	
+	
 }
